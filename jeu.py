@@ -1,3 +1,4 @@
+import sys
 import pygame
 from tableaux import niveau
 
@@ -33,7 +34,7 @@ raph_h, raph_w = raph.get_size()
 """raph.x = int(width / 2 - raph_w / 2)
 raph.y = int(height / 2 - raph_h / 2)"""
 BLUE = (0, 100, 250)
-BLACK = (0, 0, 0)
+"""BLACK = (0, 0, 0)"""
 mur = pygame.image.load("assets/mur.jpg").convert_alpha()
 mur = pygame.transform.scale(mur, (30, 30))
 
@@ -44,10 +45,11 @@ fond = pygame.transform.scale(fond, (30, 30))
 nenu = pygame.image.load("assets/nenuphar.png").convert_alpha()
 nenu = pygame.transform.scale(nenu, (30, 30))
 
+chat = pygame.image.load("assets/chat.png").convert_alpha()
+chat = pygame.transform.scale(chat, (30, 30))
+
 
 continuer = True
-
-
 
 raph.x = 30
 raph.y = 30
@@ -64,6 +66,8 @@ def draw(ecran, niveau):
             elif case == 2:
                 ecran.blit(fond, (i * 30, j * 30))
                 ecran.blit(raph.image, (raph.x, raph.y))
+            elif case == 4:
+                ecran.blit(chat, (i * 30, j * 30))
 
 def one(x, y):
     print(x, y)
@@ -76,7 +80,8 @@ def one(x, y):
         return True
     elif niveau[y][x] == 3:
         return True
-
+    elif niveau[y][x] == 4:
+        sys.exit()
 
 
 
