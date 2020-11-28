@@ -24,7 +24,7 @@ class perso(object):
 pygame.init()
 
 ecran = pygame.display.set_mode((450, 450))
-pygame.display.set_caption("Laby")
+pygame.display.set_caption("Labyrinthe")
 clock = pygame.time.Clock()
 raph = perso()
 height = ecran.get_height()
