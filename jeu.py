@@ -39,7 +39,7 @@ raph_h, raph_w = raph.get_size()
 """raph.x = int(width / 2 - raph_w / 2)
 raph.y = int(height / 2 - raph_h / 2)"""
 
-BLUE = (0, 100, 250)
+BLUE = (0, 120, 180)
 BLACK = (0, 0, 0)
 
 bleu = pygame.Surface((30, 30))
@@ -93,17 +93,17 @@ def mouv(x, y):
     elif niveau[y][x] == 2:
         return True
     elif niveau[y][x] == 3:
-        print ("nenu")
+        print ("nenuphar *")
         return True
     elif niveau[y][x] == 4:
         sys.exit()
 
-def eventof(ecran, x, y):
+def eventof(ecran, x, y, a, b):
 
     if niveau[y][x] == 3:
-        
-        ecran.blit(noir, (raph.x // x, raph.y // y))
-        print ("NENUPHAR")
+
+        ecran.blit(noir, ( int(a * 30) , int(b * 30) ))
+        print ("---NENUPHAR---")
 
 
 
@@ -122,21 +122,21 @@ while continuer:
                     raph.x += 30
                 else:
                     raph.x = raph.x
-                eventof(ecran, x, y)
+                eventof(ecran, x, y, raph.x, raph.y)
             if event.key == pygame.K_LEFT:
                 print("left")
                 if mouv(x - 1, y) and raph.x > 0:
                     raph.x -= 30
                 else:
                     raph.x = raph.x
-                eventof(ecran, x, y)
+                eventof(ecran, x, y, raph.x, raph.y)
             if event.key == pygame.K_UP:
                 print("up")
                 if mouv(x, y - 1) and raph.y > 0:
                     raph.y -= 30
                 else:
                     raph.y = raph.y
-                eventof(ecran, x, y)
+                eventof(ecran, x, y, raph.x, raph.y)
             if event.key == pygame.K_DOWN:
                 print("down")
                 if raph.y <= 390 and mouv(x, y + 1):
@@ -144,14 +144,14 @@ while continuer:
 
                 else:
                     raph.y = raph.y
-                eventof(ecran, x, y)
+                eventof(ecran, x, y, raph.x, raph.y)
                 """x, y = raph.get_pos()
                 print("X =", x, "Y =", y)"""
 
     ecran.fill(BLUE)
     draw(ecran, niveau)
     raph.prt()
-
+    """eventof(ecran, (raph.x // 30), (raph.y // 30), raph.x, raph.y)"""
     pygame.display.update()
     clock.tick(60)
 
