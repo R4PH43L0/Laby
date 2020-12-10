@@ -98,15 +98,15 @@ def mouv(x, y):
         if nenuphar == 4:
             print ("---  YOU ARE A WINNER !!!  ---")
         else:
-            print (" --- YOU LOOSE ---")
+            print (" --- OOPS, YOU LOOSE. ---")
         sys.exit()
 
-def eventof(x, y):
+def catch(x, y):
     global nenuphar
     if niveau[y][x] == 3:
         niveau[y][x] = 0
-        print ("---NENUPHAR---")
         nenuphar += 1
+        print ("NENUPHAR :", nenuphar)
 
 
 
@@ -117,8 +117,7 @@ while continuer:
         elif event.type == pygame.KEYDOWN:
             x = int(raph.x // 30)
             y = int(raph.y // 30)
-            mouv(x, y)
-            eventof(x, y)
+            catch(x, y)                     #catch nenuphar
             if event.key == pygame.K_RIGHT:
                 print("right ",raph.x)
                 if  raph.x <= 390 and mouv(x + 1, y):
@@ -154,7 +153,6 @@ while continuer:
     ecran.fill(BLUE)
     draw(ecran, niveau)
     raph.prt()
-    """eventof(ecran, (raph.x // 30), (raph.y // 30), raph.x, raph.y)"""
     pygame.display.update()
     clock.tick(60)
 
