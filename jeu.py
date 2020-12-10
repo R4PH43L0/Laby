@@ -1,3 +1,6 @@
+#/usr/bin/python3
+# -*- coding: utf-8 -*-
+
 import sys
 import pygame
 from tableaux import niveau
@@ -37,7 +40,7 @@ raph = perso()
 # width = ecran.get_width()             #
 # raph_h, raph_w = raph.get_size()      #
 
-# raph.x = int(width / 2 - raph_w / 2)   # align center
+# raph.x = int(width / 2 - raph_w / 2)   # align center for perso object
 # raph.y = int(height / 2 - raph_h / 2)  #
 
 BLUE = (0, 120, 180)
@@ -187,7 +190,7 @@ while continuer:                        # boucle principale d'evenement
 #                print("X =", x, "Y =", y)  #
 
     ecran.fill(BLUE)                        # peint le fond
-    clock.tick(14)
+    clock.tick(14)                          # vitesse du perso quand touche enfoncé
     draw(ecran, niveau)                     # dessine le niveau
     raph.prt()                              # dessine le perso
     pygame.display.update()                 # update de l'ecran à chaque boucle
