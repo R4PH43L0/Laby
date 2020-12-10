@@ -61,7 +61,7 @@ fond = pygame.transform.scale(fond, (30, 30))
 nenu = pygame.image.load("assets/nenuphar.png").convert_alpha()
 nenu = pygame.transform.scale(nenu, (30, 30))
 
-chat = pygame.image.load("assets/chat.png").convert_alpha()
+chat = pygame.image.load("assets/cat.png").convert_alpha()
 chat = pygame.transform.scale(chat, (30, 30))
 
                             # Definitions des variables
