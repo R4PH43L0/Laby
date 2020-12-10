@@ -194,7 +194,6 @@ while continuer:                        # boucle principale d'evenement
     draw(ecran, niveau)                     # dessine le niveau
     raph.prt()                              # dessine le perso
     pygame.display.update()                 # update de l'ecran à chaque boucle
-                             # clock tik unused
 
 
 pygame.quit()
