@@ -96,9 +96,11 @@ def mouv(x, y):
         return True
     elif niveau[y][x] == 4:
         if nenuphar == 4:
-            print ("---  YOU ARE A WINNER !!!  ---")
+            print ("---  YOU WIN !!!  ---")
+            print ("--- ",nenuphar," Nenuphar catched !")
         else:
             print (" --- OOPS, YOU LOOSE. ---")
+            print (" you have miss", 4 - nenuphar, "nenuphar")
         sys.exit()
 
 def catch(x, y):
@@ -106,7 +108,7 @@ def catch(x, y):
     if niveau[y][x] == 3:
         niveau[y][x] = 0
         nenuphar += 1
-        print ("NENUPHAR :", nenuphar)
+        print ("NENUPHAR = ", nenuphar)
 
 
 
