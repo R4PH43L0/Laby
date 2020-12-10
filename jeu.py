@@ -8,6 +8,7 @@ class perso(object):
         self.x = x
         self.y = y
 
+
         self.image = pygame.image.load("assets/crapeaux.png").convert_alpha()
 
         self.image = pygame.transform.scale(self.image, (30, 30))
@@ -115,54 +116,82 @@ def catch(x, y):                        # compte les nenuphars
         print ("NENUPHAR = ", nenuphar)
 
 
+pressed_keys = {"right": False, "left": False, "up": False, "down": False}
 
 while continuer:                        # boucle principale d'evenement
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             continuer = False
-        elif event.type == pygame.KEYDOWN:      # touche enfoncé
+        elif event.type == pygame.KEYDOWN:       # touche enfoncé
 
-            x = int(raph.x // 30)
-            y = int(raph.y // 30)
-            catch(x, y)                         # Catch nenuphar
+            if event.key == pygame.K_RIGHT:                 #
+                pressed_keys["right"] = True             #
 
-            if event.key == pygame.K_RIGHT:                 # MOVE RIGHT
-#                print("right")             # debug only
-                if  raph.x <= 390 and mouv(x + 1, y):
-                    raph.x += 30
-                else:
-                    raph.x = raph.x
+            if event.key == pygame.K_LEFT:                  #
+                pressed_keys["left"] = True             #
 
-            if event.key == pygame.K_LEFT:                  # MOVE LEFT
-#                print("left")              # debug only
-                if mouv(x - 1, y) and raph.x > 0:
-                    raph.x -= 30
-                else:
-                    raph.x = raph.x
+            if event.key == pygame.K_UP:                    #
+                pressed_keys["up"] = True               #
 
-            if event.key == pygame.K_UP:                    # MOVE UP
-#                print("up")                # debug only
-                if mouv(x, y - 1) and raph.y > 0:
-                    raph.y -= 30
-                else:
-                    raph.y = raph.y
+            if event.key == pygame.K_DOWN:                  #
+                pressed_keys["down"] = True              #
 
-            if event.key == pygame.K_DOWN:                  # MOVE DOWN
-#                print("down")              # debug only
-                if raph.y <= 390 and mouv(x, y + 1):
-                    raph.y += 30
+        elif event.type == pygame.KEYUP:             # touche relaché
 
-                else:
-                    raph.y = raph.y
+            if event.key == pygame.K_LEFT:
+                pressed_keys["left"] = False
+
+            if event.key == pygame.K_RIGHT:
+                pressed_keys["right"] = False
+
+            if event.key == pygame.K_UP:
+                pressed_keys["up"] = False
+
+            if event.key == pygame.K_DOWN:
+                pressed_keys["down"] = False
+
+    x = int(raph.x // 30)
+    y = int(raph.y // 30)
+    catch(x, y)                         # Catch nenuphar
+
+  # == True is implied here for the pressed_keys function
+  #  and for the mouv function
+
+    if pressed_keys["left"]:
+
+        if raph.x > 0 and mouv(x - 1, y):
+            raph.x -= 30
+        else:
+            raph.x = raph.x
+
+    if pressed_keys["right"]:
+
+        if  raph.x <= 390 and mouv(x + 1, y):
+            raph.x += 30
+        else:
+            raph.x = raph.x
+
+    if pressed_keys["up"]:
+        if raph.y > 0 and mouv(x, y - 1):
+            raph.y -= 30
+        else:
+            raph.y = raph.y
+
+    if pressed_keys["down"]:
+        if raph.y <= 390 and mouv(x, y + 1):
+            raph.y += 30
+        else:
+            raph.y = raph.y
 
 #                x, y = raph.get_pos()      # for debug only
 #                print("X =", x, "Y =", y)  #
 
     ecran.fill(BLUE)                        # peint le fond
+    clock.tick(14)
     draw(ecran, niveau)                     # dessine le niveau
     raph.prt()                              # dessine le perso
     pygame.display.update()                 # update de l'ecran à chaque boucle
-    clock.tick(60)                          # clock tik unused
+                             # clock tik unused
 
 
 pygame.quit()
