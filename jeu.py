@@ -62,7 +62,7 @@ nenu = pygame.transform.scale(nenu, (30, 30))
 chat = pygame.image.load("assets/chat.png").convert_alpha()
 chat = pygame.transform.scale(chat, (30, 30))
 
-
+nenuphar = 0
 continuer = True
 
 raph.x = 30
@@ -85,7 +85,7 @@ def draw(ecran, niveau):
 
 def mouv(x, y):
     print(x, y)
-
+    global nenuphar
     if niveau[y][x] == 1:
         return False
     elif niveau[y][x] == 0:
@@ -93,18 +93,20 @@ def mouv(x, y):
     elif niveau[y][x] == 2:
         return True
     elif niveau[y][x] == 3:
-        print ("nenuphar *")
         return True
     elif niveau[y][x] == 4:
+        if nenuphar == 4:
+            print ("---  YOU ARE A WINNER !!!  ---")
+        else:
+            print (" --- YOU LOOSE ---")
         sys.exit()
 
-def eventof(ecran, x, y, a, b):
-
+def eventof(x, y):
+    global nenuphar
     if niveau[y][x] == 3:
-
-        ecran.blit(noir, ( int(a * 30) , int(b * 30) ))
+        niveau[y][x] = 0
         print ("---NENUPHAR---")
-
+        nenuphar += 1
 
 
 
@@ -116,27 +118,28 @@ while continuer:
             x = int(raph.x // 30)
             y = int(raph.y // 30)
             mouv(x, y)
+            eventof(x, y)
             if event.key == pygame.K_RIGHT:
                 print("right ",raph.x)
                 if  raph.x <= 390 and mouv(x + 1, y):
                     raph.x += 30
                 else:
                     raph.x = raph.x
-                eventof(ecran, x, y, raph.x, raph.y)
+
             if event.key == pygame.K_LEFT:
                 print("left")
                 if mouv(x - 1, y) and raph.x > 0:
                     raph.x -= 30
                 else:
                     raph.x = raph.x
-                eventof(ecran, x, y, raph.x, raph.y)
+
             if event.key == pygame.K_UP:
                 print("up")
                 if mouv(x, y - 1) and raph.y > 0:
                     raph.y -= 30
                 else:
                     raph.y = raph.y
-                eventof(ecran, x, y, raph.x, raph.y)
+
             if event.key == pygame.K_DOWN:
                 print("down")
                 if raph.y <= 390 and mouv(x, y + 1):
@@ -144,7 +147,7 @@ while continuer:
 
                 else:
                     raph.y = raph.y
-                eventof(ecran, x, y, raph.x, raph.y)
+
                 """x, y = raph.get_pos()
                 print("X =", x, "Y =", y)"""
 
