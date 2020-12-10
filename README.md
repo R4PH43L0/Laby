@@ -1,6 +1,6 @@
 
 
-Projet Labyrinthe OC : P3
+Projet Labyrinthe OC P3 :
 
 		La grenouille doit manger tous les nénuphar avant de passer le boss, un chat.
 		Dans ce cas l'utilisateur gagne ;-)
@@ -12,11 +12,7 @@ Projet Labyrinthe OC : P3
 		
 	
 
-
-
-
-
-	TODO: 
+TODO: 
 		Implémenter les mouvements du perso dans la class Perso
 		
 		Implement movement in a more object-like code, so that movement will be in the Class Perso
@@ -25,4 +21,4 @@ Projet Labyrinthe OC : P3
 
 
 
-By R4PH43L,	 ---	raphael.gerbeaux@gmail.com	---
+By R4PH43L 
