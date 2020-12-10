@@ -94,15 +94,15 @@ def draw(ecran, niveau):                # parcour de la liste niveau puis,
 def mouv(x, y):                         # return False if wall
 #    print(x, y)                        # else let the perso pass
     global nenuphar
-    if niveau[y][x] == 1:
+    if niveau[y][x] == 1:               # Wall
         return False
-    elif niveau[y][x] == 0:
+    elif niveau[y][x] == 0:             # Water
         return True
-    elif niveau[y][x] == 2:
+    elif niveau[y][x] == 2:             # The Frog
         return True
-    elif niveau[y][x] == 3:
+    elif niveau[y][x] == 3:             # Nenuphar
         return True
-    elif niveau[y][x] == 4:
+    elif niveau[y][x] == 4:             # THE BOSS
         if nenuphar == 5:
             print ("---  YOU WIN !!!  ---")
             print ("--- ",nenuphar,"Nenuphar catched !")
