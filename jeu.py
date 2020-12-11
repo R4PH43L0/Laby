@@ -110,6 +110,7 @@ def mouv(x, y):                         # return False if wall
         else:
             print (" --- OOPS, YOU LOOSE. ---")
             print (" you have miss", 5 - nenuphar, "nenuphar")
+        return True
         sys.exit()
 
 def catch(x, y):                        # compte les nenuphars
