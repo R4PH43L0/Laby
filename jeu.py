@@ -4,6 +4,7 @@
 import sys
 import pygame
 from tableaux import niveau
+from os import getlogin
 
 
 class perso(object):
@@ -24,13 +25,13 @@ class perso(object):
 
     def get_pos(self):
         return (self.x, self.y)
-
+name = getlogin()
 
 pygame.init()
 
 ecran = pygame.display.set_mode((450, 450))
 
-pygame.display.set_caption("Labyrinthe")
+pygame.display.set_caption("Labyrinthe de " +name)
 
 clock = pygame.time.Clock()
 
@@ -105,7 +106,7 @@ def mouv(x, y):                         # return False if wall
     elif niveau[y][x] == 4:             # THE BOSS
         if nenuphar == 5:
             print ("---  YOU WIN !!!  ---")
-            print ("--- ",nenuphar,"Nenuphar catched !")
+            print ("--- ",nenuphar,"Nenuphars catched !")
         else:
             print (" --- OOPS, YOU LOOSE. ---")
             print (" you have miss", 5 - nenuphar, "nenuphar")
@@ -141,11 +142,11 @@ while continuer:                        # boucle principale d'evenement
 
         elif event.type == pygame.KEYUP:             # touche relaché
 
-            if event.key == pygame.K_LEFT:
-                pressed_keys["left"] = False
-
             if event.key == pygame.K_RIGHT:
                 pressed_keys["right"] = False
+
+            if event.key == pygame.K_LEFT:
+                pressed_keys["left"] = False
 
             if event.key == pygame.K_UP:
                 pressed_keys["up"] = False
