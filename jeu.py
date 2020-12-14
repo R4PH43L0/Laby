@@ -1,41 +1,42 @@
-#/usr/bin/python3
+#/usr/bin/pgthon3
 # -*- coding: utf-8 -*-
 
 import sys
-import pygame
-from tableaux import niveau
 from os import getlogin
+import pygame as pg
+import threading
+from tableaux import niveau
 
 
-class perso(object):
+class Perso(object):
     def __init__(self, x=0, y=0):
         self.x = x
         self.y = y
 
 
-        self.image = pygame.image.load("assets/crapeaux.png").convert_alpha()
+        self.image = pg.image.load("assets/crapeaux.png").convert_alpha()
 
-        self.image = pygame.transform.scale(self.image, (30, 30))
+        self.image = pg.transform.scale(self.image, (30, 30))
 
-    def prt(self):
+    def imprime_Perso(self):
         ecran.blit(self.image, (self.x, self.y))
 
-    def get_size(self):
+    def get_Size(self):
         return self.image.get_size()
 
-    def get_pos(self):
+    def get_Pos(self):
         return (self.x, self.y)
-name = getlogin()
+NAME = getlogin()
 
-pygame.init()
+pg.init()
 
-ecran = pygame.display.set_mode((450, 450))
+ecran = pg.display.set_mode((450, 450))
 
-pygame.display.set_caption("Labyrinthe de " +name)
+pg.display.set_caption("Labyrinthe de %s " %NAME)
 
-clock = pygame.time.Clock()
+clock = pg.time.Clock()
 
-raph = perso()
+raph = Perso()
 
 # height = ecran.get_height()           # getting sizes to align center
 # width = ecran.get_width()             #
@@ -47,30 +48,30 @@ raph = perso()
 BLUE = (0, 120, 180)
 # BLACK = (0, 0, 0)
 
-# bleu = pygame.Surface((30, 30))
+# bleu = pg.Surface((30, 30))
 # bleu.fill(BLUE)
 
-# noir = pygame.Surface((30, 30))
+# noir = pg.Surface((30, 30))
 # noir.fill(BLACK)
 
                             # Imports des assets
                             # voir ci-dessous :
-mur = pygame.image.load("assets/mur.jpg").convert_alpha()
-mur = pygame.transform.scale(mur, (30, 30))
+mur = pg.image.load("assets/mur.jpg").convert_alpha()
+mur = pg.transform.scale(mur, (30, 30))
 
-fond = pygame.image.load("assets/fond.png").convert_alpha()
-fond = pygame.transform.scale(fond, (30, 30))
+fond = pg.image.load("assets/fond.png").convert_alpha()
+fond = pg.transform.scale(fond, (30, 30))
 
 
-nenu = pygame.image.load("assets/nenuphar.png").convert_alpha()
-nenu = pygame.transform.scale(nenu, (30, 30))
+nenu = pg.image.load("assets/nenuphar.png").convert_alpha()
+nenu = pg.transform.scale(nenu, (30, 30))
 
-chat = pygame.image.load("assets/cat.png").convert_alpha()
-chat = pygame.transform.scale(chat, (30, 30))
+chat = pg.image.load("assets/cat.png").convert_alpha()
+chat = pg.transform.scale(chat, (30, 30))
 
                             # Definitions des variables
-nenuphar = 0
-continuer = True
+NENUPHAR = 0
+CONTINUER = True
 
                             # Position de départ du Perso
 raph.x = 30
@@ -94,7 +95,7 @@ def draw(ecran, niveau):                # parcour de la liste niveau puis,
 
 def mouv(x, y):                         # return False if wall
 #    print(x, y)                        # else let the perso pass
-    global nenuphar
+    global NENUPHAR
     if niveau[y][x] == 1:               # Wall
         return False
     elif niveau[y][x] == 0:             # Water
@@ -104,55 +105,58 @@ def mouv(x, y):                         # return False if wall
     elif niveau[y][x] == 3:             # Nenuphar
         return True
     elif niveau[y][x] == 4:             # THE BOSS
-        if nenuphar == 5:
+        if NENUPHAR == 5:
             print ("---  YOU WIN !!!  ---")
-            print ("--- ",nenuphar,"Nenuphars catched !")
+            print ("--- ",NENUPHAR,"Nenuphars catched !")
+
         else:
             print (" --- OOPS, YOU LOOSE. ---")
-            print (" you have miss", 5 - nenuphar, "nenuphar")
-        return True
-        sys.exit()
+            print (" you have miss", 5 - NENUPHAR, "nenuphar")
+
+        sys.exit(0)
+
+
 
 def catch(x, y):                        # compte les nenuphars
-    global nenuphar
+    global NENUPHAR
     if niveau[y][x] == 3:
         niveau[y][x] = 0
-        nenuphar += 1
-        print ("NENUPHAR = ", nenuphar)
+        NENUPHAR += 1
+        print ("NENUPHAR = ", NENUPHAR)
 
 
 pressed_keys = {"right": False, "left": False, "up": False, "down": False}
 
-while continuer:                        # boucle principale d'evenement
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
+while CONTINUER:                        # boucle principale d'evenement
+    for event in pg.event.get():
+        if event.type == pg.QUIT:
             continuer = False
-        elif event.type == pygame.KEYDOWN:       # touche enfoncé
+        elif event.type == pg.KEYDOWN:       # touche enfoncé
 
-            if event.key == pygame.K_RIGHT:                 #
+            if event.key == pg.K_RIGHT:                 #
                 pressed_keys["right"] = True             #
 
-            if event.key == pygame.K_LEFT:                  #
+            if event.key == pg.K_LEFT:                  #
                 pressed_keys["left"] = True             #
 
-            if event.key == pygame.K_UP:                    #
+            if event.key == pg.K_UP:                    #
                 pressed_keys["up"] = True               #
 
-            if event.key == pygame.K_DOWN:                  #
+            if event.key == pg.K_DOWN:                  #
                 pressed_keys["down"] = True              #
 
-        elif event.type == pygame.KEYUP:             # touche relaché
+        elif event.type == pg.KEYUP:             # touche relaché
 
-            if event.key == pygame.K_RIGHT:
+            if event.key == pg.K_RIGHT:
                 pressed_keys["right"] = False
 
-            if event.key == pygame.K_LEFT:
+            if event.key == pg.K_LEFT:
                 pressed_keys["left"] = False
 
-            if event.key == pygame.K_UP:
+            if event.key == pg.K_UP:
                 pressed_keys["up"] = False
 
-            if event.key == pygame.K_DOWN:
+            if event.key == pg.K_DOWN:
                 pressed_keys["down"] = False
 
     x = int(raph.x // 30)
@@ -194,8 +198,8 @@ while continuer:                        # boucle principale d'evenement
     ecran.fill(BLUE)                        # peint le fond
     clock.tick(14)                          # vitesse du perso quand touche enfoncé
     draw(ecran, niveau)                     # dessine le niveau
-    raph.prt()                              # dessine le perso
-    pygame.display.update()                 # update de l'ecran à chaque boucle
+    raph.imprime_Perso()                     # dessine le perso
+    pg.display.update()                 # update de l'ecran à chaque boucle
 
 
-pygame.quit()
+pg.quit()
