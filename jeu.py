@@ -4,7 +4,6 @@
 import sys
 from os import getlogin
 import pygame as pg
-import threading
 from tableaux import niveau
 
 
@@ -26,6 +25,7 @@ class Perso(object):
 
     def get_Pos(self):
         return (self.x, self.y)
+
 NAME = getlogin()
 
 pg.init()
@@ -113,7 +113,8 @@ def mouv(x, y):                         # return False if wall
             print (" --- OOPS, YOU LOOSE. ---")
             print (" you have miss", 5 - NENUPHAR, "nenuphar")
 
-        sys.exit(0)
+        quit()
+#        sys.exit(0)
 
 
 
@@ -130,7 +131,8 @@ pressed_keys = {"right": False, "left": False, "up": False, "down": False}
 while CONTINUER:                        # boucle principale d'evenement
     for event in pg.event.get():
         if event.type == pg.QUIT:
-            continuer = False
+            CONTINUER = False
+            
         elif event.type == pg.KEYDOWN:       # touche enfoncé
 
             if event.key == pg.K_RIGHT:                 #
