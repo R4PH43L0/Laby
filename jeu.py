@@ -1,7 +1,7 @@
-#/usr/bin/pgthon3
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
 
-import sys
+
 from os import getlogin
 import pygame as pg
 from tableaux import niveau
@@ -17,13 +17,13 @@ class Perso(object):
 
         self.image = pg.transform.scale(self.image, (30, 30))
 
-    def imprime_Perso(self):
+    def imprime_perso(self):
         ecran.blit(self.image, (self.x, self.y))
 
-    def get_Size(self):
+    def get_size(self):
         return self.image.get_size()
 
-    def get_Pos(self):
+    def get_pos(self):
         return (self.x, self.y)
 
 NAME = getlogin()
@@ -93,6 +93,7 @@ def draw(ecran, niveau):                # parcour de la liste niveau puis,
             elif case == 4:
                 ecran.blit(chat, (i * 30, j * 30))
 
+
 def mouv(x, y):                         # return False if wall
 #    print(x, y)                        # else let the perso pass
     global NENUPHAR
@@ -132,7 +133,7 @@ while CONTINUER:                        # boucle principale d'evenement
     for event in pg.event.get():
         if event.type == pg.QUIT:
             CONTINUER = False
-            
+
         elif event.type == pg.KEYDOWN:       # touche enfoncé
 
             if event.key == pg.K_RIGHT:                 #
@@ -200,7 +201,7 @@ while CONTINUER:                        # boucle principale d'evenement
     ecran.fill(BLUE)                        # peint le fond
     clock.tick(14)                          # vitesse du perso quand touche enfoncé
     draw(ecran, niveau)                     # dessine le niveau
-    raph.imprime_Perso()                     # dessine le perso
+    raph.imprime_perso()                     # dessine le perso
     pg.display.update()                 # update de l'ecran à chaque boucle
 
 
