@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+"""Definition of the only level."""
 
 niveau = [
     [1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 4, 1],
