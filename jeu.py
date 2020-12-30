@@ -79,7 +79,6 @@ raph.y = 30
 
 def draw(ecran, niveau):
     """Parcour de la liste niveau puis, blit des differents éléments."""
-
     for j, ligne in enumerate(niveau):
         for i, case in enumerate(ligne):
             if case == 1:
@@ -96,7 +95,7 @@ def draw(ecran, niveau):
 
 
 def mouv(x, y):
-    """Return False if wall else let the perso pass."""
+    """Return False if WALL else let the perso go on."""
     global NENUPHAR
     if niveau[y][x] == 1:               # Wall
         return False
