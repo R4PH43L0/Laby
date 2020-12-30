@@ -196,11 +196,11 @@ while CONTINUER:
 #                x, y = raph.get_pos()      # for debug only
 #                print("X =", x, "Y =", y)  #
 
-    ecran.fill(BLUE)                        # peint le fond
-    clock.tick(14)                          # vitesse du perso quand touche enfoncé
-    draw(ecran, niveau)                     # dessine le niveau
-    raph.imprime_perso()                     # dessine le perso
-    pg.display.update()                 # update de l'ecran à chaque boucle
+    ecran.fill(BLUE)             # peint le fond
+    clock.tick(14)               # vitesse du perso quand la touche est enfoncé
+    draw(ecran, niveau)          # dessine le niveau
+    raph.imprime_perso()         # dessine le perso
+    pg.display.update()          # update de l'ecran à chaque boucle
 
 
 pg.quit()
