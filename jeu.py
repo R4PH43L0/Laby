@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+"""Labyrinthe."""
 # -*- coding: utf-8 -*-
 
 
@@ -8,23 +8,29 @@ from tableaux import niveau
 
 
 class Perso(object):
+    """Definition of the item."""
+
     def __init__(self, x=0, y=0):
+        """Definition of the position of the item with x and y."""
         self.x = x
         self.y = y
-
 
         self.image = pg.image.load("assets/crapeaux.png").convert_alpha()
 
         self.image = pg.transform.scale(self.image, (30, 30))
 
     def imprime_perso(self):
+        """Blit function of pygame to print the item."""
         ecran.blit(self.image, (self.x, self.y))
 
     def get_size(self):
+        """Return the size of the item."""
         return self.image.get_size()
 
     def get_pos(self):
+        """Return the position of the object."""
         return (self.x, self.y)
+
 
 NAME = getlogin()
 
@@ -32,7 +38,7 @@ pg.init()
 
 ecran = pg.display.set_mode((450, 450))
 
-pg.display.set_caption("Labyrinthe de %s " %NAME)
+pg.display.set_caption("Labyrinthe de %s " % NAME)
 
 clock = pg.time.Clock()
 
@@ -46,16 +52,9 @@ raph = Perso()
 # raph.y = int(height / 2 - raph_h / 2)  #
 
 BLUE = (0, 120, 180)
-# BLACK = (0, 0, 0)
 
-# bleu = pg.Surface((30, 30))
-# bleu.fill(BLUE)
-
-# noir = pg.Surface((30, 30))
-# noir.fill(BLACK)
-
-                            # Imports des assets
-                            # voir ci-dessous :
+# Imports des assets
+# voir ci-dessous :
 mur = pg.image.load("assets/mur.jpg").convert_alpha()
 mur = pg.transform.scale(mur, (30, 30))
 
@@ -69,33 +68,36 @@ nenu = pg.transform.scale(nenu, (30, 30))
 chat = pg.image.load("assets/cat.png").convert_alpha()
 chat = pg.transform.scale(chat, (30, 30))
 
-                            # Definitions des variables
+# Definitions des variables
 NENUPHAR = 0
 CONTINUER = True
 
-                            # Position de départ du Perso
+# Position de départ du Perso
 raph.x = 30
 raph.y = 30
 
-def draw(ecran, niveau):                # parcour de la liste niveau puis,
-                                        # blit des differents éléments
-    for j, ligne in enumerate(niveau):
-        for i, case in enumerate(ligne):
-            if case == 1:
-                ecran.blit(mur, (i * 30, j * 30))
-            elif case == 0:
-                ecran.blit(fond,(i * 30, j * 30))
-            elif case == 3:
-                ecran.blit(nenu, (i * 30, j * 30))
-            elif case == 2:
-                ecran.blit(raph.image,(raph.x, raph.y))
-                ecran.blit(fond, (i * 30, j * 30))
-            elif case == 4:
-                ecran.blit(chat, (i * 30, j * 30))
+
+def draw(ecran, niveau):
+    """Parcour de la liste niveau puis, blit des differents éléments."""
 
 
-def mouv(x, y):                         # return False if wall
-#    print(x, y)                        # else let the perso pass
+for j, ligne in enumerate(niveau):
+    for i, case in enumerate(ligne):
+        if case == 1:
+            ecran.blit(mur, (i * 30, j * 30))
+        elif case == 0:
+            ecran.blit(fond, (i * 30, j * 30))
+        elif case == 3:
+            ecran.blit(nenu, (i * 30, j * 30))
+        elif case == 2:
+            ecran.blit(raph.image, (raph.x, raph.y))
+            ecran.blit(fond, (i * 30, j * 30))
+        elif case == 4:
+            ecran.blit(chat, (i * 30, j * 30))
+
+
+def mouv(x, y):
+    """Return False if wall else let the perso pass."""
     global NENUPHAR
     if niveau[y][x] == 1:               # Wall
         return False
@@ -107,29 +109,27 @@ def mouv(x, y):                         # return False if wall
         return True
     elif niveau[y][x] == 4:             # THE BOSS
         if NENUPHAR == 5:
-            print ("---  YOU WIN !!!  ---")
-            print ("--- ",NENUPHAR,"Nenuphars catched !")
-
+            print("---  YOU WIN !!!  ---")
+            print("--- ", NENUPHAR, "Nenuphars catched !")
         else:
-            print (" --- OOPS, YOU LOOSE. ---")
-            print (" you have miss", 5 - NENUPHAR, "nenuphar")
-
+            print(" --- OOPS, YOU LOOSE. ---")
+            print(" you have miss", 5 - NENUPHAR, "nenuphar")
         quit()
-#        sys.exit(0)
 
 
-
-def catch(x, y):                        # compte les nenuphars
+def catch(x, y):
+    """Compte les nenuphars."""
     global NENUPHAR
     if niveau[y][x] == 3:
         niveau[y][x] = 0
         NENUPHAR += 1
-        print ("NENUPHAR = ", NENUPHAR)
+        print("NENUPHAR = ", NENUPHAR)
 
 
 pressed_keys = {"right": False, "left": False, "up": False, "down": False}
 
-while CONTINUER:                        # boucle principale d'evenement
+# boucle principale d'evenement
+while CONTINUER:
     for event in pg.event.get():
         if event.type == pg.QUIT:
             CONTINUER = False
@@ -166,8 +166,8 @@ while CONTINUER:                        # boucle principale d'evenement
     y = int(raph.y // 30)
     catch(x, y)                         # Catch nenuphar
 
-  # == True is implied here for the pressed_keys function
-  #  and for the mouv function
+# == True is implied here for the pressed_keys function
+#  and for the mouv function
 
     if pressed_keys["left"]:
 
@@ -178,7 +178,7 @@ while CONTINUER:                        # boucle principale d'evenement
 
     if pressed_keys["right"]:
 
-        if  raph.x <= 390 and mouv(x + 1, y):
+        if raph.x <= 390 and mouv(x + 1, y):
             raph.x += 30
         else:
             raph.x = raph.x
