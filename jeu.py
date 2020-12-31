@@ -28,7 +28,7 @@ class Perso(object):
         return self.image.get_size()
 
     def get_pos(self):
-        """Return the position of the object."""
+        """Return the position of the item."""
         return (self.x, self.y)
 
 
