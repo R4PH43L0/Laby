@@ -6,9 +6,11 @@ créer une methode mouv dans la class Perso , je vais le faire avec 2 fonctions 
 donc :  def mouvement(self, direction)
 	    if direction == "left"
 		appliquer la fct Perso.mouv: if raph.x > 0 and Perso..mouv(x - 1, y) .. etc
-		
+
 	puis dans le fichier principal jeu.py
 
-	raph.mouvement("left")	
+	raph.mouvement("left")
 
+créer un fichier CONFIG avec les constantes ..
 
+-- Tout ces différents fichiers doivent être importer dans jeu.py --
