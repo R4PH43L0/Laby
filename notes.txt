@@ -1,7 +1,7 @@
 #notes.txt
 
 deplacer la class perso dans un fichier à part
-en créean un module dans un dossier avec un fichichier vide du nom de __init__.py
+en créean un module dans un dossier avec un fichier vide du nom de __init__.py
 créer une methode mouv dans la class Perso , je vais le faire avec 2 fonctions differentes cad : def mouv(self, niveau) puis def mouvement(self, direction)
 donc :  def mouvement(self, direction)
 	    if direction == "left"
