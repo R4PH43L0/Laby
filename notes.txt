@@ -1,0 +1,14 @@
+#notes.txt
+
+deplacer la class perso dans un fichier à part
+en créean un module dans un dossier avec un fichichier vide du nom de __init__.py
+créer une methode mouv dans la class Perso , je vais le faire avec 2 fonctions differentes cad : def mouv(self, niveau) puis def mouvement(self, direction)
+donc :  def mouvement(self, direction)
+	    if direction == "left"
+		appliquer la fct Perso.mouv: if raph.x > 0 and Perso..mouv(x - 1, y) .. etc
+		
+	puis dans le fichier principal jeu.py
+
+	raph.mouvement("left")	
+
+
