@@ -1,8 +1,2 @@
-
-pygame >= 1.9
-
-#Note : On Debian-like sys :
-#		apt-get install python3
-#		apt-get install python3-pip
-#	then
-#		pip3 install pygame
+pkg-resources==0.0.0
+pygame==2.0.1
