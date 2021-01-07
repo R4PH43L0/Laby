@@ -7,12 +7,11 @@ from tableaux import niveau
 from modeles.perso import Perso
 from constantes import *
 from imagesofpg import *
+import pygame as pg
 
 NAME = getlogin()
 
 pg.init()
-
-ecran = pg.display.set_mode((450, 450))
 
 pg.display.set_caption("Labyrinthe de %s " % NAME)
 
