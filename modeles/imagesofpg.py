@@ -17,5 +17,5 @@ nenu = pg.transform.scale(nenu, (30, 30))
 chat = pg.image.load("assets/cat.png").convert_alpha()
 chat = pg.transform.scale(chat, (30, 30))
 
-"""fct for Perso Class"""
+"""function for Perso Class"""
 ecran = pg.display.set_mode((450, 450))
