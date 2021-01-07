@@ -4,10 +4,10 @@
 
 from os import getlogin
 from modeles.tableaux import niveau
+from modeles.imprime import Drawing
 from modeles.perso import Perso
 from constantes import *
-from imagesofpg import *
-import pygame as pg
+
 
 NAME = getlogin()
 
@@ -19,27 +19,11 @@ clock = pg.time.Clock()
 
 raph = Perso(30, 30, niveau)
 
-def draw(ecran, niveau):
-    """Parcour de la liste niveau puis, blit des differents éléments."""
-    for j, ligne in enumerate(niveau):
-        for i, case in enumerate(ligne):
-            if case == 1:
-                ecran.blit(mur, (i * 30, j * 30))
-            elif case == 0:
-                ecran.blit(fond, (i * 30, j * 30))
-            elif case == 3:
-                ecran.blit(nenu, (i * 30, j * 30))
-            elif case == 2:
-                ecran.blit(raph.image, (raph.x, raph.y))
-                ecran.blit(fond, (i * 30, j * 30))
-            elif case == 4:
-                ecran.blit(chat, (i * 30, j * 30))
-
-
 
 pressed_keys = {"right": False, "left": False, "up": False, "down": False}
 
 # boucle principale d'evenement
+
 while CONTINUER:
     for event in pg.event.get():
         if event.type == pg.QUIT:
@@ -93,7 +77,7 @@ while CONTINUER:
 
     ecran.fill(BLUE)             # peint le fond
     clock.tick(14)               # vitesse du perso quand la touche est enfoncé
-    draw(ecran, niveau)          # dessine le niveau
+    Drawing(ecran, niveau)          # dessine le niveau
     raph.imprime_perso()         # dessine le perso
     pg.display.update()          # update de l'ecran à chaque boucle
 

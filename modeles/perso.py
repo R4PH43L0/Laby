@@ -1,6 +1,6 @@
 """Class Perso, the item constructor."""
 
-from imagesofpg import *
+from modeles.imagesofpg import *
 
 
 
