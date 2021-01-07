@@ -14,7 +14,7 @@ class Perso(object):
 
 
     def imprime_perso(self):
-        """Blit function of pygame to print the item."""
+        """Blit function of pygame to print the item, ecran is defined in constantes.py."""
         ecran.blit(self.image, (self.x, self.y))
 
     def get_size(self):
