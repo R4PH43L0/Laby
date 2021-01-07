@@ -3,10 +3,9 @@
 
 
 from os import getlogin
-import pygame as pg
 from tableaux import niveau
 from modeles.perso import Perso
-
+from constantes import *
 
 
 NAME = getlogin()
@@ -20,34 +19,6 @@ pg.display.set_caption("Labyrinthe de %s " % NAME)
 clock = pg.time.Clock()
 
 raph = Perso()
-
-# height = ecran.get_height()           # getting sizes to align center
-# width = ecran.get_width()             #
-# raph_h, raph_w = raph.get_size()      #
-
-# raph.x = int(width / 2 - raph_w / 2)   # align center for perso object
-# raph.y = int(height / 2 - raph_h / 2)  #
-
-BLUE = (0, 120, 180)
-
-# Imports des assets
-# voir ci-dessous :
-mur = pg.image.load("assets/mur.jpg").convert_alpha()
-mur = pg.transform.scale(mur, (30, 30))
-
-fond = pg.image.load("assets/fond.png").convert_alpha()
-fond = pg.transform.scale(fond, (30, 30))
-
-
-nenu = pg.image.load("assets/nenuphar.png").convert_alpha()
-nenu = pg.transform.scale(nenu, (30, 30))
-
-chat = pg.image.load("assets/cat.png").convert_alpha()
-chat = pg.transform.scale(chat, (30, 30))
-
-# Definitions des variables
-NENUPHAR = 0
-CONTINUER = True
 
 # Position de départ du Perso
 raph.x = 30

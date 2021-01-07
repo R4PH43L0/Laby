@@ -1,6 +1,6 @@
 """Class Perso, the item constructor."""
 
-import pygame as pg
+from constantes import *
 
 class Perso(object):
     """Definition of the item."""
@@ -10,9 +10,8 @@ class Perso(object):
         self.x = x
         self.y = y
 
-        self.image = pg.image.load("/home/raph/PY/Laby/assets/crapeaux.png").convert_alpha()
+        self.image = item
 
-        self.image = pg.transform.scale(self.image, (30, 30))
 
     def imprime_perso(self):
         """Blit function of pygame to print the item."""
@@ -27,4 +26,3 @@ class Perso(object):
         return (self.x, self.y)
 
 
-ecran = pg.display.set_mode((450, 450))
