@@ -6,7 +6,7 @@ from os import getlogin
 from tableaux import niveau
 from modeles.perso import Perso
 from constantes import *
-
+from imagesofpg import *
 
 NAME = getlogin()
 
