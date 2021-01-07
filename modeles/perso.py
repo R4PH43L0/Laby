@@ -1,12 +1,13 @@
 """Class Perso, the item constructor."""
 
 from imagesofpg import *
-from constantes import *
-from modeles.tableaux import niveau
+
+
 
 class Perso(object):
     """Definition of the item."""
     global nenuphar
+    nenuphar = int(0)
 
     def __init__(self, x, y, niveau):
         """Definition of the position of the item with x and y."""
