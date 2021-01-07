@@ -1,6 +1,6 @@
 """Class Perso, the item constructor."""
 
-from constantes import *
+from imagesofpg import *
 
 class Perso(object):
     """Definition of the item."""
