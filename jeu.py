@@ -3,7 +3,7 @@
 
 
 from os import getlogin
-from tableaux import niveau
+from modeles.tableaux import niveau
 from modeles.perso import Perso
 from constantes import *
 from imagesofpg import *
@@ -17,12 +17,7 @@ pg.display.set_caption("Labyrinthe de %s " % NAME)
 
 clock = pg.time.Clock()
 
-raph = Perso()
-
-# Position de départ du Perso
-raph.x = 30
-raph.y = 30
-
+raph = Perso(30, 30, niveau)
 
 def draw(ecran, niveau):
     """Parcour de la liste niveau puis, blit des differents éléments."""
@@ -40,35 +35,6 @@ def draw(ecran, niveau):
             elif case == 4:
                 ecran.blit(chat, (i * 30, j * 30))
 
-
-def mouv(x, y):
-    """Return False if WALL else let the perso go on."""
-    global NENUPHAR
-    if niveau[y][x] == 1:               # Wall
-        return False
-    elif niveau[y][x] == 0:             # Water
-        return True
-    elif niveau[y][x] == 2:             # The Frog
-        return True
-    elif niveau[y][x] == 3:             # Nenuphar
-        return True
-    elif niveau[y][x] == 4:             # THE BOSS
-        if NENUPHAR == 5:
-            print("---  YOU WIN !!!  ---")
-            print("--- ", NENUPHAR, "Nenuphars catched !")
-        else:
-            print(" --- OOPS, YOU LOOSE. ---")
-            print(" you have miss", 5 - NENUPHAR, "nenuphar")
-        quit()
-
-
-def catch(x, y):
-    """Compte les nenuphars."""
-    global NENUPHAR
-    if niveau[y][x] == 3:
-        niveau[y][x] = 0
-        NENUPHAR += 1
-        print("NENUPHAR = ", NENUPHAR)
 
 
 pressed_keys = {"right": False, "left": False, "up": False, "down": False}
@@ -107,41 +73,23 @@ while CONTINUER:
             if event.key == pg.K_DOWN:
                 pressed_keys["down"] = False
 
-    x = int(raph.x // 30)
-    y = int(raph.y // 30)
-    catch(x, y)                         # Catch nenuphar
 
 # == True is implied here for the pressed_keys function
 #  and for the mouv function
 
     if pressed_keys["left"]:
-
-        if raph.x > 0 and mouv(x - 1, y):
-            raph.x -= 30
-        else:
-            raph.x = raph.x
+        raph.mouvement("left")
 
     if pressed_keys["right"]:
-
-        if raph.x <= 390 and mouv(x + 1, y):
-            raph.x += 30
-        else:
-            raph.x = raph.x
+        raph.mouvement("right")
 
     if pressed_keys["up"]:
-        if raph.y > 0 and mouv(x, y - 1):
-            raph.y -= 30
-        else:
-            raph.y = raph.y
+        raph.mouvement("up")
 
     if pressed_keys["down"]:
-        if raph.y <= 390 and mouv(x, y + 1):
-            raph.y += 30
-        else:
-            raph.y = raph.y
+        raph.mouvement("down")
 
-#                x, y = raph.get_pos()      # for debug only
-#                print("X =", x, "Y =", y)  #
+
 
     ecran.fill(BLUE)             # peint le fond
     clock.tick(14)               # vitesse du perso quand la touche est enfoncé
