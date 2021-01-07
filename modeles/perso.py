@@ -1,5 +1,7 @@
 """Class Perso, the item constructor."""
 
+import pygame as pg
+
 class Perso(object):
     """Definition of the item."""
 
@@ -8,7 +10,7 @@ class Perso(object):
         self.x = x
         self.y = y
 
-        self.image = pg.image.load("assets/crapeaux.png").convert_alpha()
+        self.image = pg.image.load("/home/raph/PY/Laby/assets/crapeaux.png").convert_alpha()
 
         self.image = pg.transform.scale(self.image, (30, 30))
 
@@ -23,3 +25,6 @@ class Perso(object):
     def get_pos(self):
         """Return the position of the item."""
         return (self.x, self.y)
+
+
+ecran = pg.display.set_mode((450, 450))
