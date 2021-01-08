@@ -1,13 +1,14 @@
 """Class Perso, the item constructor."""
 
 from modeles.imprime import *
+
 imp = Drawing(pg.display.set_mode((450, 450)), niveau)
 
 
 class Perso(object):
     """Definition of the item."""
+
     global nenuphar
-    nenuphar = int(0)
 
     def __init__(self, x, y, niveau):
         """Definition of the position of the item with x and y."""
@@ -18,7 +19,7 @@ class Perso(object):
         self.image = item
 
     def imprime_perso(self):
-        """Blit function of pygame to print the item, ecran is defined in constantes.py."""
+        """Blit function of pygame to print the item."""
         imp.ecran.blit(self.image, (self.x, self.y))
 
     def get_size(self):
@@ -27,7 +28,19 @@ class Perso(object):
 
     def get_pos(self):
         """Return the position of the item."""
+
         return (self.x, self.y)
+
+    def the_boss(self):
+        """What to do when you meet the Boss."""
+
+        if nenuphar == 5:
+            print("---  YOU WIN !!!  ---")
+            print("--- ", nenuphar, "Nenuphars catched !")
+        else:
+            print(" --- OOPS, YOU LOOSE. ---")
+            print(" you have miss", 5 - nenuphar, "nenuphar")
+        quit()
 
     def mouv(self, x, y):
         """Return False if WALL else let the perso go on."""
@@ -41,29 +54,26 @@ class Perso(object):
         elif self.niveau[y][x] == 3:  # Nenuphar
             return True
         elif self.niveau[y][x] == 4:  # THE BOSS
-            if nenuphar == 5:
-                print("---  YOU WIN !!!  ---")
-                print("--- ", nenuphar, "Nenuphars catched !")
-            else:
-                print(" --- OOPS, YOU LOOSE. ---")
-                print(" you have miss", 5 - nenuphar, "nenuphar")
-            quit()
+            self.the_boss()
 
     def catch(self, x, y):
         """Compte les nenuphars."""
+
         global nenuphar
+        nenuphar = 0
         if self.niveau[y][x] == 3:
             self.niveau[y][x] = 0
             nenuphar += 1
             print("NENUPHAR = ", nenuphar)
 
-
-
     def mouvement(self, direction):
+        """Movements of the Item."""
+
         x = int(self.x // 30)
         y = int(self.y // 30)
 
         self.catch(x, y)
+
         if direction == "left":
             if self.x > 0 and self.mouv(x - 1, y):
                 self.x -= 30

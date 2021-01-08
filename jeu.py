@@ -11,7 +11,7 @@ from constantes import *
 
 NAME = getlogin()
 
-imprime = Drawing(pg.display.set_mode((450,450)), niveau)
+imprime = Drawing(pg.display.set_mode((450, 450)), niveau)
 
 pg.init()
 
@@ -21,12 +21,9 @@ clock = pg.time.Clock()
 
 raph = Perso(30, 30, niveau)
 
-
-
 pressed_keys = {"right": False, "left": False, "up": False, "down": False}
 
 # boucle principale d'evenement
-
 while CONTINUER:
     for event in pg.event.get():
         if event.type == pg.QUIT:
@@ -75,8 +72,6 @@ while CONTINUER:
 
     if pressed_keys["down"]:
         raph.mouvement("down")
-
-
 
     imprime.ecran.fill(BLUE)             # peint le fond
     clock.tick(14)               # vitesse du perso quand la touche est enfoncé

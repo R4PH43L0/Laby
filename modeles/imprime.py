@@ -4,6 +4,7 @@ import pygame as pg
 from modeles.tableaux import niveau
 from constantes import *
 
+
 class Drawing(object):
     """Draw the Labyrinthe."""
 
@@ -22,12 +23,9 @@ class Drawing(object):
                 elif case == 3:
                     self.ecran.blit(nenu, (i * 30, j * 30))
                 elif case == 2:
-                    #self.ecran.blit(item, (30, 30))
                     self.ecran.blit(fond, (i * 30, j * 30))
                 elif case == 4:
                     self.ecran.blit(chat, (i * 30, j * 30))
-
-
 
 
 Drawing(pg.display.set_mode((450, 450)), niveau)
