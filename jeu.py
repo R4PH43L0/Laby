@@ -11,6 +11,8 @@ from constantes import *
 
 NAME = getlogin()
 
+imprime = Drawing(ecran, niveau)
+
 pg.init()
 
 pg.display.set_caption("Labyrinthe de %s " % NAME)
@@ -18,6 +20,7 @@ pg.display.set_caption("Labyrinthe de %s " % NAME)
 clock = pg.time.Clock()
 
 raph = Perso(30, 30, niveau)
+
 
 
 pressed_keys = {"right": False, "left": False, "up": False, "down": False}
@@ -77,7 +80,7 @@ while CONTINUER:
 
     ecran.fill(BLUE)             # peint le fond
     clock.tick(14)               # vitesse du perso quand la touche est enfoncé
-    Drawing(ecran, niveau)          # dessine le niveau
+    imprime.draw()          # dessine le niveau
     raph.imprime_perso()         # dessine le perso
     pg.display.update()          # update de l'ecran à chaque boucle
 

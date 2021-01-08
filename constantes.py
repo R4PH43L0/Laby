@@ -1,6 +1,6 @@
 """Constantes."""
 
-PATH = "/"
+PATH = "/home/raph/PY/Laby"
 BLUE = (0, 120, 180)
 CONTINUER = True
 
