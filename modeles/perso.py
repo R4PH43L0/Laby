@@ -1,7 +1,7 @@
 """Class Perso, the item constructor."""
 
-from modeles.imagesofpg import *
-
+from modeles.imprime import *
+imp = Drawing(pg.display.set_mode((450, 450)), niveau)
 
 
 class Perso(object):
@@ -19,7 +19,7 @@ class Perso(object):
 
     def imprime_perso(self):
         """Blit function of pygame to print the item, ecran is defined in constantes.py."""
-        ecran.blit(self.image, (self.x, self.y))
+        imp.ecran.blit(self.image, (self.x, self.y))
 
     def get_size(self):
         """Return the size of the item."""

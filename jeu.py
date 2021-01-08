@@ -1,7 +1,7 @@
 """Labyrinthe."""
 # -*- coding: utf-8 -*-
 
-
+import pygame as pg
 from os import getlogin
 from modeles.tableaux import niveau
 from modeles.imprime import Drawing
@@ -11,7 +11,7 @@ from constantes import *
 
 NAME = getlogin()
 
-imprime = Drawing(ecran, niveau)
+imprime = Drawing(pg.display.set_mode((450,450)), niveau)
 
 pg.init()
 
@@ -78,7 +78,7 @@ while CONTINUER:
 
 
 
-    ecran.fill(BLUE)             # peint le fond
+    imprime.ecran.fill(BLUE)             # peint le fond
     clock.tick(14)               # vitesse du perso quand la touche est enfoncé
     imprime.draw()          # dessine le niveau
     raph.imprime_perso()         # dessine le perso

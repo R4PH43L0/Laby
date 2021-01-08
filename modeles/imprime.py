@@ -1,26 +1,51 @@
 """Class imprime labyrinthe ."""
 
-
+import pygame as pg
 from modeles.tableaux import niveau
-from modeles.imagesofpg import *
+from constantes import *
 
 class Drawing(object):
     """Draw the Labyrinthe."""
+
     def __init__(self, ecran, niveau):
-        self.ecran = pg.display.set_mode((450, 450))
+        self.ecran = ecran
         self.niveau = niveau
+
     def draw(self):
         """Parcour de la liste niveau puis, blit des differents éléments."""
         for j, ligne in enumerate(niveau):
             for i, case in enumerate(ligne):
                 if case == 1:
-                    ecran.blit(mur, (i * 30, j * 30))
+                    self.ecran.blit(mur, (i * 30, j * 30))
                 elif case == 0:
-                    ecran.blit(fond, (i * 30, j * 30))
+                    self.ecran.blit(fond, (i * 30, j * 30))
                 elif case == 3:
-                    ecran.blit(nenu, (i * 30, j * 30))
+                    self.ecran.blit(nenu, (i * 30, j * 30))
                 elif case == 2:
-                    ecran.blit(raph.image, (raph.x, raph.y))
-                    ecran.blit(fond, (i * 30, j * 30))
+                    #self.ecran.blit(item, (30, 30))
+                    self.ecran.blit(fond, (i * 30, j * 30))
                 elif case == 4:
-                    ecran.blit(chat, (i * 30, j * 30))
+                    self.ecran.blit(chat, (i * 30, j * 30))
+
+
+
+
+Drawing(pg.display.set_mode((450, 450)), niveau)
+
+"""Iamges loading in pygame."""
+
+item = pg.image.load(Crapeaux).convert_alpha()
+item = pg.transform.scale(item, (30, 30))
+
+mur = pg.image.load(Wall).convert_alpha()
+mur = pg.transform.scale(mur, (30, 30))
+
+fond = pg.image.load(Fond).convert_alpha()
+fond = pg.transform.scale(fond, (30, 30))
+
+
+nenu = pg.image.load(Nenu).convert_alpha()
+nenu = pg.transform.scale(nenu, (30, 30))
+
+chat = pg.image.load(Cat).convert_alpha()
+chat = pg.transform.scale(chat, (30, 30))
