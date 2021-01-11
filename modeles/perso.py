@@ -9,6 +9,7 @@ class Perso(object):
     """Definition of the item."""
 
     global nenuphar
+    nenuphar = 0
 
     def __init__(self, x, y, niveau):
         """Definition of the position of the item with x and y."""
@@ -34,6 +35,7 @@ class Perso(object):
     def the_boss(self):
         """What to do when you meet the Boss."""
 
+        global nenuphar
         if nenuphar == 5:
             print("---  YOU WIN !!!  ---")
             print("--- ", nenuphar, "Nenuphars catched !")
@@ -60,7 +62,7 @@ class Perso(object):
         """Compte les nenuphars."""
 
         global nenuphar
-        nenuphar = 0
+
         if self.niveau[y][x] == 3:
             self.niveau[y][x] = 0
             nenuphar += 1
