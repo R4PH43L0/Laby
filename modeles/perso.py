@@ -42,7 +42,7 @@ class Perso(object):
         else:
             print(" --- OOPS, YOU LOOSE. ---")
             print(" you have miss", 5 - nenuphar, "nenuphar")
-            imp.ecran.blit(youlose, (450, 450))
+            imp.ecran.blit(youlose, (0, 0))
             pg.display.update()
             pg.time.delay(3000)
         quit()
