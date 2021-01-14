@@ -50,3 +50,5 @@ chat = pg.transform.scale(chat, (30, 30))
 
 youlose = pg.image.load(Lose)
 youlose = pg.transform.scale(youlose, (450, 450))
+youwin = pg.image.load(Win)
+youwin = pg.transform.scale(youwin, (450, 450))
