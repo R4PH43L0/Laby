@@ -1,4 +1,5 @@
 """Class Perso, the item constructor."""
+import pygame as pg
 
 from modeles.imprime import *
 
@@ -35,13 +36,15 @@ class Perso(object):
     def the_boss(self):
         """What to do when you meet the Boss."""
 
-        global nenuphar
         if nenuphar == 5:
             print("---  YOU WIN !!!  ---")
             print("--- ", nenuphar, "Nenuphars catched !")
         else:
             print(" --- OOPS, YOU LOOSE. ---")
             print(" you have miss", 5 - nenuphar, "nenuphar")
+            imp.ecran.blit(youlose, (450, 450))
+            pg.display.update()
+            pg.time.delay(3000)
         quit()
 
     def mouv(self, x, y):
@@ -62,7 +65,6 @@ class Perso(object):
         """Compte les nenuphars."""
 
         global nenuphar
-
         if self.niveau[y][x] == 3:
             self.niveau[y][x] = 0
             nenuphar += 1

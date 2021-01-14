@@ -47,3 +47,6 @@ nenu = pg.transform.scale(nenu, (30, 30))
 
 chat = pg.image.load(Cat).convert_alpha()
 chat = pg.transform.scale(chat, (30, 30))
+
+youlose = pg.image.load(Lose)
+youlose = pg.transform.scale(youlose, (450, 450))

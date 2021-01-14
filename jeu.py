@@ -15,7 +15,7 @@ imprime = Drawing(pg.display.set_mode((450, 450)), niveau)
 
 pg.init()
 
-pg.display.set_caption("Labyrinthe de %s " % NAME)
+pg.display.set_caption("Labyrinthe of %s " % NAME)
 
 clock = pg.time.Clock()
 
@@ -29,8 +29,8 @@ while CONTINUER:
         if event.type == pg.QUIT:
             CONTINUER = False
 
-        elif event.type == pg.KEYDOWN:       # touche enfoncé
-
+        elif event.type == pg.KEYDOWN:       # key down so there is a speed
+                                              # see below
             if event.key == pg.K_RIGHT:                 #
                 pressed_keys["right"] = True             #
 
@@ -43,7 +43,7 @@ while CONTINUER:
             if event.key == pg.K_DOWN:                  #
                 pressed_keys["down"] = True              #
 
-        elif event.type == pg.KEYUP:             # touche relaché
+        elif event.type == pg.KEYUP:             # key up
 
             if event.key == pg.K_RIGHT:
                 pressed_keys["right"] = False
@@ -57,9 +57,7 @@ while CONTINUER:
             if event.key == pg.K_DOWN:
                 pressed_keys["down"] = False
 
-
 # == True is implied here for the pressed_keys function
-#  and for the mouv function
 
     if pressed_keys["left"]:
         raph.mouvement("left")
