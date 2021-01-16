@@ -1,7 +1,8 @@
 """Class Perso, the item constructor."""
 import pygame as pg
 
-from modeles.imprime import *
+from modeles.imprime import Drawing, item, youwin, youlose
+from modeles.tableaux import niveau
 
 imp = Drawing(pg.display.set_mode((450, 450)), niveau)
 
