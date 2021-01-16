@@ -3,8 +3,8 @@
 
 import pygame as pg
 from os import getlogin
-from modeles.tableaux import niveau
-from modeles.imprime import Drawing
+from niveaux.tableaux import niveau
+from vues.imprime import Drawing
 from modeles.perso import Perso
 
 

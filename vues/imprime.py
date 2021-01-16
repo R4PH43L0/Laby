@@ -1,7 +1,7 @@
 """Class imprime labyrinthe ."""
 
 import pygame as pg
-from modeles.tableaux import niveau
+from niveaux.tableaux import niveau
 from constantes import Crapeaux, Wall, Fond, Nenu, Cat, Lose, Win
 from random import sample
 
