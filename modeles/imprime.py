@@ -3,6 +3,7 @@
 import pygame as pg
 from modeles.tableaux import niveau
 from constantes import Crapeaux, Wall, Fond, Nenu, Cat, Lose, Win
+from random import sample
 
 
 class Drawing(object):
@@ -11,17 +12,32 @@ class Drawing(object):
     def __init__(self, ecran, niveau):
         self.ecran = ecran
         self.niveau = niveau
+        self.nenuph = self._position_nenuph()
+        self.nenuph_visibles = self._random_nenuph()
+
+    def _position_nenuph(self):
+        positions = []
+        for j, ligne in enumerate(niveau):
+            for i, case in enumerate(ligne):
+                if case == 3:
+                    positions.append((i, j))
+        return positions
+
+    def _random_nenuph(self):
+        return sample(self.nenuph, 3)
 
     def draw(self):
         """Parcour de la liste niveau puis, blit des differents éléments."""
         for j, ligne in enumerate(niveau):
             for i, case in enumerate(ligne):
+                if case == 3:
+                    print(i, j)
                 if case == 1:
                     self.ecran.blit(mur, (i * 30, j * 30))
-                elif case == 0:
-                    self.ecran.blit(fond, (i * 30, j * 30))
-                elif case == 3:
+                elif case == 3 and (i, j) in self.nenuph_visibles:
                     self.ecran.blit(nenu, (i * 30, j * 30))
+                elif case == 0 or case == 3:
+                    self.ecran.blit(fond, (i * 30, j * 30))
                 elif case == 2:
                     self.ecran.blit(fond, (i * 30, j * 30))
                 elif case == 4:

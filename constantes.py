@@ -1,6 +1,6 @@
 """Constantes."""
 
-PATH = "/home/raph/PY/Laby"
+PATH = "C:/Users/Olivier/PycharmProjects/LabyRaph"
 BLUE = (0, 120, 180)
 CONTINUER = True
 
