@@ -2,7 +2,7 @@
 
 import pygame as pg
 from modeles.tableaux import niveau
-from constantes import *
+from constantes import Crapeaux, Wall, Fond, Nenu, Cat, Lose, Win
 
 
 class Drawing(object):

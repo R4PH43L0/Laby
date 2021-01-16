@@ -9,19 +9,16 @@ from modeles.perso import Perso
 
 
 def game():
-
-
     """Start the game."""
-
     from constantes import BLUE, CONTINUER
 
-    NAME = getlogin()
+    name = getlogin()
 
     imprime = Drawing(pg.display.set_mode((450, 450)), niveau)
 
     pg.init()
 
-    pg.display.set_caption("Labyrinthe of %s " % NAME)
+    pg.display.set_caption("Labyrinthe of %s " % name)
 
     clock = pg.time.Clock()
 
@@ -29,25 +26,26 @@ def game():
 
     pressed_keys = {"right": False, "left": False, "up": False, "down": False}
 
-# boucle principale d'evenement
+# main loop, catching pygame event
     while CONTINUER:
         for event in pg.event.get():
             if event.type == pg.QUIT:
                 CONTINUER = False
 
-            elif event.type == pg.KEYDOWN:       # key down so there is a speed
-                                              # see below
-                if event.key == pg.K_RIGHT:                 #
-                    pressed_keys["right"] = True             #
+            elif event.type == pg.KEYDOWN:
+                """key down so there is a speed\
+                   see below"""
+                if event.key == pg.K_RIGHT:
+                    pressed_keys["right"] = True
 
-                if event.key == pg.K_LEFT:                  #
-                    pressed_keys["left"] = True             #
+                if event.key == pg.K_LEFT:
+                    pressed_keys["left"] = True
 
-                if event.key == pg.K_UP:                    #
-                    pressed_keys["up"] = True               #
+                if event.key == pg.K_UP:
+                    pressed_keys["up"] = True
 
-                if event.key == pg.K_DOWN:                  #
-                    pressed_keys["down"] = True              #
+                if event.key == pg.K_DOWN:
+                    pressed_keys["down"] = True
 
             elif event.type == pg.KEYUP:             # key up
 
@@ -83,8 +81,8 @@ def game():
         raph.imprime_perso()         # dessine le perso
         pg.display.update()          # update de l'ecran à chaque boucle
 
-
     pg.quit()
+
 
 if __name__=='__main__':
     game()
