@@ -1,6 +1,6 @@
 """Constantes."""
-
-PATH = "C:/Users/Olivier/PycharmProjects/LabyRaph"
+from os import path
+PATH = path.abspath(".")
 BLUE = (0, 120, 180)
 CONTINUER = True
 

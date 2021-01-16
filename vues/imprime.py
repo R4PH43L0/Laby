@@ -30,8 +30,8 @@ class Drawing(object):
         """Parcour de la liste niveau puis, blit des differents éléments."""
         for j, ligne in enumerate(niveau):
             for i, case in enumerate(ligne):
-                if case == 3:
-                    print(i, j)
+        #        if case == 3:
+        #            print(i, j)          # for debug only
                 if case == 1:
                     self.ecran.blit(mur, (i * 30, j * 30))
                 elif case == 3 and (i, j) in self.nenuph_visibles:
