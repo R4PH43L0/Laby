@@ -37,7 +37,7 @@ class Perso(object):
     def the_boss(self):
         """What to do when you meet the Boss."""
 
-        if nenuphar == 5:
+        if nenuphar == 3:
             print("---  YOU WIN !!!  ---")
             print("--- ", nenuphar, "Nenuphars catched !")
             imp.ecran.blit(youwin, (0, 0))
@@ -45,7 +45,7 @@ class Perso(object):
             pg.time.delay(4000)
         else:
             print(" --- OOPS, YOU LOOSE. ---")
-            print(" you have miss", 5 - nenuphar, "nenuphar")
+            print(" you have miss", 3 - nenuphar, "nenuphar")
             imp.ecran.blit(youlose, (0, 0))
             pg.display.update()
             pg.time.delay(4000)
