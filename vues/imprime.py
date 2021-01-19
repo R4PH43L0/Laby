@@ -10,6 +10,7 @@ class Drawing(object):
     """Draw the Labyrinthe."""
 
     def __init__(self, ecran, niveau):
+        """Class draw."""
         self.ecran = ecran
         self.niveau = niveau
         self.nenuph = self._position_nenuph()
@@ -37,6 +38,7 @@ class Drawing(object):
                 elif case == 3 and (i, j) in self.nenuph_visibles:
                     self.ecran.blit(nenu, (i * 30, j * 30))
                 elif case == 0 or case == 3:
+                    niveau[j][i] = 0
                     self.ecran.blit(fond, (i * 30, j * 30))
                 elif case == 2:
                     self.ecran.blit(fond, (i * 30, j * 30))

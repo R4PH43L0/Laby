@@ -31,12 +31,10 @@ class Perso(object):
 
     def get_pos(self):
         """Return the position of the item."""
-
         return (self.x, self.y)
 
     def the_boss(self):
         """What to do when you meet the Boss."""
-
         if nenuphar == 3:
             print("---  YOU WIN !!!  ---")
             print("--- ", nenuphar, "Nenuphars catched !")
@@ -53,7 +51,6 @@ class Perso(object):
 
     def mouv(self, x, y):
         """Return False if WALL else let the perso go on."""
-
         if self.niveau[y][x] == 1:  # Wall
             return False
         elif self.niveau[y][x] == 0:  # Water
@@ -67,16 +64,15 @@ class Perso(object):
 
     def catch(self, x, y):
         """Compte les nenuphars."""
-
         global nenuphar
         if self.niveau[y][x] == 3:
             self.niveau[y][x] = 0
             nenuphar += 1
             print("NENUPHAR = ", nenuphar)
+            print(x, y)
 
     def mouvement(self, direction):
         """Movements of the Item."""
-
         x = int(self.x // 30)
         y = int(self.y // 30)
 
