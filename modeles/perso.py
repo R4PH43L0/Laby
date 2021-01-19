@@ -34,7 +34,7 @@ class Perso(object):
         return (self.x, self.y)
 
     def the_boss(self):
-        """What to do when you meet the Boss."""
+        """You win or you lose when you meet the Boss."""
         if nenuphar == 3:
             print("---  YOU WIN !!!  ---")
             print("--- ", nenuphar, "Nenuphars catched !")

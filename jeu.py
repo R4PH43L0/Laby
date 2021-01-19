@@ -76,7 +76,7 @@ def game():
             raph.mouvement("down")
 
         imprime.ecran.fill(BLUE)             # peint le fond
-        clock.tick(14)               # vitesse du perso quand la touche est enfoncé
+        clock.tick(14)           # vitesse du perso quand la touche est enfoncé
         imprime.draw()          # dessine le niveau
         raph.imprime_perso()         # dessine le perso
         pg.display.update()          # update de l'ecran à chaque boucle
@@ -84,5 +84,5 @@ def game():
     pg.quit()
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     game()
